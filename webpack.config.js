@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const host = process.env.HOST || "localhost";
+const host = process.env.HOST || "127.0.0.1";
 
 module.exports = function (env, argv) {
   const mode = argv.mode || "development";
@@ -26,6 +26,7 @@ module.exports = function (env, argv) {
     },
     devServer: {
       contentBase: path.resolve(__dirname, "public/index.html"),
+      watchContentBase: true,
       compress: true,
       hot: true,
       host,
@@ -39,4 +40,4 @@ module.exports = function (env, argv) {
       }),
     ],
   };
-};
+}
