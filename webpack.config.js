@@ -25,13 +25,15 @@ module.exports = function (env, argv) {
       extensions: [".js", ".jsx"],
     },
     devServer: {
-      contentBase: path.resolve(__dirname, "public/index.html"),
-      watchContentBase: true,
+      static: path.resolve(__dirname, "public/index.html"),
+      open: true,
       compress: true,
       hot: true,
       host,
       port: 3000,
-      publicPath: "/",
+      devMiddleware: {
+        publicPath: "/"
+      }
     },
     plugins: [
       new HtmlWebpackPlugin({
